@@ -27,7 +27,7 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 		public TestAdapter() {
 			mElementsData = new String[] {
 				"hello", "world", "the", "lazy",
-				"dog", "jumps", "over", "the", "fox"
+				"dog", "jumps", "over", "the"
 			};
 		}
 
@@ -79,7 +79,8 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        onUsingHeaderViewWidget();
+//        onUsingHeaderViewWidget();
+        onUsingFooterWidget();
     }
 
 	private void onUsingHeaderViewWidget() {
@@ -90,6 +91,18 @@ public class MainActivity extends ActionBarActivity implements OnItemClickListen
         TextView header = (TextView) getLayoutInflater().inflate(R.layout.griditem, gv, false);
         HeaderGridView hgv = (HeaderGridView)gv;
         hgv.addHeaderView(header, null, true);
+        hgv.setAdapter(adapter);
+        hgv.setOnItemClickListener(this);
+	}
+	
+	private void onUsingFooterWidget() {
+		setContentView(R.layout.activity_main1);
+		
+        GridView gv = (GridView) findViewById(R.id.gridView2);
+        BaseAdapter adapter = new TestAdapter();
+        TextView header = (TextView) getLayoutInflater().inflate(R.layout.griditem, gv, false);
+        FooterGridView hgv = (FooterGridView)gv;
+        hgv.addFooterView(header, null, true);
         hgv.setAdapter(adapter);
         hgv.setOnItemClickListener(this);
 	}

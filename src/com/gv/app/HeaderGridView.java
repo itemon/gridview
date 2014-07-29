@@ -86,7 +86,7 @@ public class HeaderGridView extends GridView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        if (isHR()) {
+        if (!isHR()) {
         	final int available = MeasureSpec.getSize(widthMeasureSpec) - 
         			getPaddingLeft() - getPaddingRight();
         	onFigureColumns(available);
