@@ -365,7 +365,8 @@ public class FooterHeaderGridView extends GridView {
         @Override
         public int getCount() {
             if (mAdapter != null) {
-                return getFootersCount() * mNumColumns + mAdapter.getCount();
+//                return getFootersCount() * mNumColumns + mAdapter.getCount();
+            	return getHeaderAndPlaceHolders() + mAdapter.getCount();
             } else {
                 return getFootersCount() * mNumColumns;
             }
@@ -532,6 +533,7 @@ public class FooterHeaderGridView extends GridView {
         		if (position >= adapterCount && (position % mNumColumns) != 0) {
         			return mAdapter.getViewTypeCount();
         		}
+        		return mAdapter.getItemViewType(position);
         	}
         	
             return AdapterView.ITEM_VIEW_TYPE_HEADER_OR_FOOTER;
